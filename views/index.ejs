@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Livraria</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <h1>Listagem de livros</h1>
+    <p>Livros já cadastrados</p>
+
+    <table>
+      <thead>
+        <tr style="background-color: #CCC;">
+          <td>Título</td>
+          <td>Ano</td>
+          <td>Gênero</td>
+          <td>Ações</td>
+        </tr>
+      </thead>
+      <!-------------------------------------->
+      <tbody>
+        <% if (!registros || registros.length == 0 ) { %>
+          <tr>
+            <td colspan="4">Nenhum registro cadastrado</td>
+          </tr>
+        <% } else { 
+          registros.forEach(function(livro){ %>
+          <tr>
+            <td><%= livro.livtitulo %> </td>
+            <td><%= livro.livano %></td>
+            <td><%= livro.gencodigo %></td>
+            <td>Alterar | Apagar</td>
+          </tr>
+        <% })} %>
+      </tbody>
+      <!-------------------------------------->
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <br>
+            <a href="'/novoLivro">Cadastrar livro</a>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+
+  </body>
+</html>
