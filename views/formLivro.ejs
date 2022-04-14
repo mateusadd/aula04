@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Livraria</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+      <h1><% titulo %></h1>
+      <p>Preencher Dados</p>
+      <form action="<%acao%>" method="post">
+        <table>
+            <tr>
+                <td>Titulo</td>
+                <td><input name="edtTitulo"></td>
+            </tr>
+            <tr>
+                <td>Ano</td>
+                <td><input name="edtAno"></td>
+            </tr>
+            <tr>
+                <td>Genero</td>
+                <td>
+                    <select name="selGenero">
+                        <option value="1">Computação</option>
+                        <option value="2">Fantasia</option>
+                        <option value="3">Filosofia</option>
+                        <option value="4">Politica</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="/">Cancelar</a></td>
+                <td><input type="submit" value="Salvar"></td>
+            </tr>
+        </table>
+      </form>
+  </body>
+</html>

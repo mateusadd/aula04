@@ -37,5 +37,12 @@ async function listarLivros()
     return registros
 }
 
+async function inserirLivro(livro){
 
-module.exports = { listarLivros }
+    const conexao = await conectarBD()
+    const sql = "insert into livros (livtitulo, livano, gencodigo) values (?,?,?);"
+    return await conexao.query(sql, [livro.titulo, livro.ano, livro.genero])
+
+}
+
+module.exports = { listarLivros, inserirLivro }
