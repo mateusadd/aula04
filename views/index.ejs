@@ -30,7 +30,10 @@
             <td><%= livro.livtitulo %> </td>
             <td><%= livro.livano %></td>
             <td><%= livro.gencodigo %></td>
-            <td>Alterar | Apagar</td>
+            <td>
+              <a href="/alteraLivro/<%= livro.livcodigo %>">Alterar</a> | 
+              <a href="/apagaLivro/<%= livro.livcodigo %>" onclick="return confirm('Confirmar exclusão?');">Apagar</a>
+            </td>
           </tr>
         <% })} %>
       </tbody>

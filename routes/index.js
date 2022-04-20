@@ -24,4 +24,18 @@ router.post('/novoLivro', async function(req, res){
 
 });
 
+router.get('/alteraLivro/:id', async function(req,res){
+
+
+
+})
+
+router.get('/apagaLivro/:id', async function(req,res){
+
+  const codigo = parseInt(req.params.id)
+  await global.db.apagarLivro(codigo)
+  res.redirect('/')
+
+})
+
 module.exports = router;

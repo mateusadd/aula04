@@ -45,4 +45,12 @@ async function inserirLivro(livro){
 
 }
 
-module.exports = { listarLivros, inserirLivro }
+async function apagarLivro(codigo) {
+
+    const conexao = await conectarBD()
+    const sql = "delete from livros where livcodigo=?;"
+    return await conexao.query(sql,[codigo])
+
+}
+
+module.exports = { listarLivros, inserirLivro, apagarLivro }
