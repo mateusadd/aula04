@@ -11,20 +11,20 @@
         <table>
             <tr>
                 <td>Titulo</td>
-                <td><input name="edtTitulo"></td>
+                <td><input name="edtTitulo" value="<%=livro.livtitulo%>"></td>
             </tr>
             <tr>
                 <td>Ano</td>
-                <td><input name="edtAno"></td>
+                <td><input name="edtAno" value="<%=livro.livano%>"></td>
             </tr>
             <tr>
                 <td>Genero</td>
                 <td>
                     <select name="selGenero">
-                        <option value="1">Computação</option>
-                        <option value="2">Fantasia</option>
-                        <option value="3">Filosofia</option>
-                        <option value="4">Politica</option>
+                        <option value="1" <% if(livro.gencodigo == 1) { %> selected <% } %> >Computação</option>
+                        <option value="2" <% if(livro.gencodigo == 2) { %> selected <% } %> >Fantasia</option>
+                        <option value="3" <% if(livro.gencodigo == 3) { %> selected <% } %> >Filosofia</option>
+                        <option value="4" <% if(livro.gencodigo == 4) { %> selected <% } %> >Politica</option>
                     </select>
                 </td>
             </tr>

@@ -53,4 +53,22 @@ async function apagarLivro(codigo) {
 
 }
 
-module.exports = { listarLivros, inserirLivro, apagarLivro }
+async function recuperarLivro(codigo) {
+
+    const conexao = await conectarBD()
+    const sql = 'select * from livros where livcodigo=?;'
+    //return await conexao.query(sql, [codigo])
+    const [livro] = await conexao.query(sql, [codigo])
+    return livro[0]
+
+}
+
+async function alterarLivro(livro) {
+
+    const conexao = await conectarBD()
+    const sql = "update livros set livtitulo=?, livano=?, gencodigo=? where livcodigo=?;"
+    await conexao.query(sql, [livro.titulo, livro.ano, livro.genero, livro.codigo])
+
+}
+
+module.exports = { listarLivros, inserirLivro, apagarLivro, recuperarLivro, alterarLivro }
