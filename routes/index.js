@@ -1,11 +1,47 @@
 var express = require('express');
+const { route } = require('express/lib/application');
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', async function(req, res) {
+
+  if(!global.usuariocodigo || global.usuariocodigo == 0) {
+
+    res.redirect('/login')
+
+  }
+
   const registros = await global.db.listarLivros()
-  res.render('index', { registros });
+  const usuario = global.usuariologin
+  res.render('index', { registros, usuario })
+  
 });
+
+router.get('/login', function(req,res) {
+
+  res.render('login')
+
+})
+
+router.get('/sair', function (req, res) {
+
+  global.usuariocodigo = 0
+  res.redirect('/')
+
+})
+
+router.post('/login', async function(req, res) {
+
+  const usuario = req.body.edtUsuario
+  const senha = req.body.edtSenha
+
+  const user = await global.db.buscarUsuario({usuario, senha})
+
+  global.usuariocodigo = user.usucodigo
+  global.usuariologin = user.usulogin
+  res.redirect('/')
+
+})
 
 router.get('/novoLivro', function(req, res){
 

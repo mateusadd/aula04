@@ -71,4 +71,16 @@ async function alterarLivro(livro) {
 
 }
 
-module.exports = { listarLivros, inserirLivro, apagarLivro, recuperarLivro, alterarLivro }
+async function buscarUsuario(us) {
+
+    const conexao = await conectarBD()
+    const sql = 'select * from usuarios where usulogin=? and ususenha=?'
+    const [user] =  await conexao.query(sql, [us.usuario, us.senha])
+
+    return user && user.length>0 ? user[0] : {}
+
+}
+
+conectarBD()
+
+module.exports = { listarLivros, inserirLivro, apagarLivro, recuperarLivro, alterarLivro, buscarUsuario }
