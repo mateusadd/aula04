@@ -88,4 +88,10 @@ router.post('/alteraLivro/:id', async function(req, res) {
 
 })
 
+router.get('/boot', function(req,res) {
+
+  res.render('boot')
+
+})
+
 module.exports = router;
